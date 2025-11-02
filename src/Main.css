@@ -1,0 +1,291 @@
+:root {
+  --color-navy: #002772;
+  --color-light-pink: #fde2ff;
+  --color-pink: #720060;
+  --color-black: #1e1e1e;
+  --color-blue-sky: #d6e6ff;
+  --color-dark-grey: #3f3f3f;
+  --color-beach: #dcdcdc;
+  --color-white: #ffffff;
+
+  /* Fonts */
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* --- Global Styles --- */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ID ini me-refer ke div utama di App.vue
+  Ini yang akan berganti-ganti background-color
+*/
+#app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+  transition: background-color 0.3s ease;
+}
+
+/* --- Base Card Style --- */
+.product-card {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-image {
+  flex-basis: 40%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+}
+
+.product-image img {
+  max-width: 100%;
+  height: 300px; /* Memberi tinggi tetap agar konsisten */
+  object-fit: contain;
+}
+
+.product-details {
+  flex-basis: 60%;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-category {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: var(--color-black);
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: var(--color-dark-grey);
+  line-height: 1.5;
+  flex-grow: 1; /* Mendorong tombol ke bawah */
+  overflow-y: auto; /* Jika deskripsi panjang */
+  max-height: 100px; /* Batasi tinggi deskripsi */
+}
+
+.product-rating {
+  font-size: 0.9rem;
+  color: var(--color-dark-grey);
+  margin-bottom: 15px;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  border-top: 1px solid var(--color-beach);
+  padding-top: 20px;
+}
+
+.product-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-black);
+}
+
+/* --- Base Button Styles --- */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buy-button {
+  color: var(--color-white);
+}
+
+.next-button {
+  background-color: transparent;
+  border: 2px solid var(--color-black); /* Border default */
+  color: var(--color-black); /* Warna teks default */
+}
+
+/* ---
+    Poin 1 & 4 Desain: Dynamic Styling based on Class Binding
+--- */
+
+/* --- 1. Page - Women Section --- */
+.page-women {
+  background: linear-gradient(to bottom, var(--color-light-pink) 60%, var(--color-white) 40%);
+}
+.page-women .product-category {
+  color: var(--color-pink);
+}
+.page-women .buy-button {
+  background-color: var(--color-pink);
+}
+.page-women .next-button {
+  border-color: var(--color-pink);
+  color: var(--color-pink);
+}
+.page-women .next-button:hover {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+.page-women .buy-button:hover {
+  opacity: 0.8;
+}
+
+/* --- 2. Page - Men Section --- */
+.page-men {
+  background: linear-gradient(to bottom, var(--color-blue-sky) 60%, var(--color-white) 40%);
+}
+.page-men .product-category {
+  color: var(--color-navy);
+}
+.page-men .buy-button {
+  background-color: var(--color-navy);
+}
+.page-men .next-button {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+.page-men .next-button:hover {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+.page-men .buy-button:hover {
+  opacity: 0.8;
+}
+
+/* --- 3. Page - Unavailable Product --- */
+.page-unavailable {
+  background: linear-gradient(to bottom, var(--color-beach) 60%, var(--color-white) 40%);
+}
+.unavailable-card {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  gap: 20px;
+  background-color: var(--color-white);
+  border: 2px dashed var(--color-beach);
+  color: var(--color-dark-grey);
+}
+.sad-face {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--color-beach);
+}
+.unavailable-card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-dark-grey);
+}
+.unavailable-card .next-button {
+  border-color: var(--color-dark-grey);
+  color: var(--color-dark-grey);
+  width: 200px; /* Lebar tombol sesuai mockup */
+}
+.unavailable-card .next-button:hover {
+  background-color: var(--color-dark-grey);
+  color: var(--color-white);
+}
+
+/* --- 4. Loading State --- */
+.loading-card {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  gap: 20px;
+  color: var(--color-dark-grey);
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid var(--color-navy); /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara "2.9/5" dan titik-titik */
+  margin-top: 5px; /* Memberi jarak dari judul */
+  margin-bottom: 15px; /* Memberi jarak ke deskripsi */
+}
+
+.rating-value {
+  font-size: 0.9rem;
+  color: var(--color-dark-grey);
+}
+
+.rating-dots {
+  display: flex;
+  gap: 4px; /* Jarak antar titik */
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  /* Style default (Women): Dot kosong (outline) */
+  border: 2px solid var(--color-pink);
+  background-color: var(--color-white);
+  transition: all 0.2s ease;
+}
+
+/* Style default (Women): Dot terisi (filled) */
+.dot.filled {
+  background-color: var(--color-pink);
+  border-color: var(--color-pink);
+}
+
+/* --- Penyesuaian Warna untuk Pria --- */
+/* Mengganti warna dot jika di dalam .page-men */
+.page-men .dot {
+  border-color: var(--color-navy);
+}
+.page-men .dot.filled {
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
